@@ -55,7 +55,7 @@
 <body>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 8 October 2026</p>
+  <p class="updated">Last updated: 9 October 2026</p>
 
   <p>This policy explains what information Cadent collects, why it is collected, and what happens to it. Cadent is provided by Jack Leeming ("we", "us", "our").</p>
 
@@ -64,7 +64,7 @@
   <h2>Summary</h2>
   <ul>
     <li>We store the workouts and goals in your account so they are available on your other devices.</li>
-    <li>GPS route data is not uploaded. Maps are drawn on your device using data from Apple Health.</li>
+    <li>The routes of your outdoor workouts are stored with them, so maps appear on all your devices.</li>
     <li>We do not sell your information, and we do not use advertising or analytics services.</li>
     <li>You can export your data and delete your account from within the app.</li>
   </ul>
@@ -81,15 +81,18 @@
     <li>energy burned, and average and maximum heart rate</li>
     <li>cadence, and for swimming the lap count, stroke count and pool length</li>
     <li>the app or device the workout came from, and that source's identifier for it, so that a repeated import updates an existing workout rather than creating a duplicate</li>
+    <li>for outdoor workouts, the route: position and altitude at points about five seconds apart</li>
+    <li>a copy of each workout as Apple Health provided it, so that it can be read again correctly if Cadent's handling of it improves</li>
   </ul>
   <p>We also store the activity, target, period and year of each goal you create, and whether you are currently tracking it. If you send feedback through the app, we store your message and your account email address so that we can reply.</p>
 
   <h2>Location and route data</h2>
-  <p>Cadent displays maps of your outdoor workouts. The route is read from Apple Health on your device and drawn there. Route data is not transmitted to us and is not stored in our database. If you sign in on another device, maps on that device are drawn from that device's own Apple Health data.</p>
+  <p>Cadent displays maps of your outdoor workouts. The route is read from Apple Health and stored with the workout in your account, so its map appears on any device you sign in on. A route shows where a workout took place, which can include places such as your home, so it is stored with the same access controls as the rest of your account and is visible only to you.</p>
+  <p>If the app that recorded a workout did not save its time zone, Cadent asks Apple's location service for the time zone at the route's starting point, so the workout shows the local time it took place.</p>
 
   <h2>What we do not collect</h2>
   <p>Cadent contains no advertising software and no analytics software. We do not build profiles of users and we do not track you across other apps or websites.</p>
-  <p>Cadent requests access to workouts and their routes only. It does not read other categories of health data and it does not write any data to Apple Health. It does not request access to your contacts, photos, microphone or precise location.</p>
+  <p>Cadent requests access to workouts, their routes, and the heart rate, energy and distance recorded during them. It does not read other categories of health data and it does not write any data to Apple Health. It does not request access to your device's location, contacts, photos or microphone.</p>
 
   <h2>How we use this information</h2>
   <p>We use it to provide the app by storing your workouts and goals and making them available across your devices, to authenticate you when you sign in, to send account emails such as registration confirmation and password resets, and to respond to feedback and support requests.</p>
@@ -102,18 +105,18 @@
   <h2>Service providers</h2>
   <p>We use the following third parties to operate the app. None of them are advertising networks.</p>
   <ul>
-    <li><strong>Supabase</strong> hosts the database and handles sign-in. It receives your account, workout and goal information, stored in the Southeast Asia region.</li>
+    <li><strong>Supabase</strong> hosts the database and handles sign-in. It receives your account, workout, route and goal information, stored in the Southeast Asia region.</li>
     <li><strong>Brevo</strong> sends account emails, and receives your email address and the contents of those emails.</li>
-    <li><strong>Apple</strong> provides Sign in with Apple and App Store distribution, subject to Apple's own privacy policy.</li>
+    <li><strong>Apple</strong> provides Sign in with Apple, App Store distribution, and the time zone lookup described above, which receives a route's starting point. Subject to Apple's own privacy policy.</li>
     <li><strong>Google</strong> provides Google Sign-In where you choose to use it, subject to Google's own privacy policy.</li>
-    <li><strong>OpenFreeMap</strong> supplies map imagery, and receives your device's IP address when imagery is requested, in the same way as loading any image from the internet. Your route is not sent, as it is drawn on your device.</li>
+    <li><strong>OpenFreeMap</strong> supplies map imagery, and receives your device's IP address when imagery is requested, in the same way as loading any image from the internet. Your route itself is not sent; the imagery requested covers the area the map shows.</li>
   </ul>
 
   <h2>International transfers</h2>
   <p>Our database is hosted in the Southeast Asia region, so your information is stored outside the United Kingdom and the European Economic Area. Where we transfer personal data internationally we rely on appropriate safeguards, including the standard contractual clauses offered by our hosting provider.</p>
 
   <h2>Retention and security</h2>
-  <p>We keep your workouts and goals until you delete them or delete your account. Deleting your account removes your account and its associated data from our database. Our hosting provider retains backups for a limited period, after which those copies are also removed.</p>
+  <p>We keep your workouts, routes and goals until you delete them or delete your account. Deleting your account removes your account, its associated data and its stored files. Our hosting provider retains backups for a limited period, after which those copies are also removed.</p>
   <p>Information is transmitted over encrypted connections and stored with access controls that prevent one account from reading another account's data. No online service can be guaranteed completely secure, and we limit the information we hold to what the app requires.</p>
 
   <h2>Your rights</h2>
