@@ -1,0 +1,170 @@
+/* Cadent website. Spec: _cadent/3 Website/Website refresh spec.md (19 Oct 2026). */
+
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #FAFBFC; --surface: #FFFFFF; --text: #12151C; --text-2: #5A6170;
+  --accent: #2F6BDB; --accent-2: #6A48F5;
+  --hairline: rgba(18,21,28,.08);
+  --shadow: 0 8px 24px rgba(18,21,28,.08), 0 1px 2px rgba(18,21,28,.06);
+  --phone-shadow: 0 24px 60px rgba(18,21,28,.14), 0 2px 6px rgba(18,21,28,.06);
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --page: 1120px; --read: 680px; --gutter: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111214; --surface: #1D1E22; --text: #F4F4F5; --text-2: #A9AAB1;
+    --accent: #5B8DEF; --accent-2: #8869FF;
+    --hairline: rgba(244,244,245,.10);
+    --shadow: 0 8px 24px rgba(0,0,0,.35), 0 1px 2px rgba(0,0,0,.4);
+    --phone-shadow: 0 24px 60px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.4);
+  }
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -.015em; }
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
+.lead { font-size: 18px; line-height: 1.5; color: var(--text-2); }
+.small { font-size: 14px; line-height: 1.45; color: var(--text-2); }
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--hairline);
+}
+.header .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; line-height: 1; letter-spacing: -.01em; }
+.brand img { width: 28px; height: 28px; border-radius: 7px; }
+.header .badge { display: none; }
+.header .back { font-size: 15px; color: var(--text-2); }
+.header .back:hover { color: var(--text); }
+@media (min-width: 768px) { .header .badge { display: block; --badge-h: 36px; } }
+
+/* ---------- App Store badge (Apple's artwork; black on light, white on dark) ---------- */
+.badge { --badge-h: 48px; display: block; transition: transform .18s ease, opacity .18s ease; }
+.badge img { height: var(--badge-h); width: auto; }
+.badge:hover { opacity: .9; }
+.badge:active { transform: scale(.98); }
+.store-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+
+/* ---------- Phone ---------- */
+.phone {
+  position: relative; aspect-ratio: 1320/2868; border-radius: 9.5%/4.4%; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--hairline); box-shadow: var(--phone-shadow);
+}
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phone.top {
+  aspect-ratio: 1320/1700; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 0; box-shadow: none;
+  mask-image: linear-gradient(#000 82%, transparent); -webkit-mask-image: linear-gradient(#000 82%, transparent);
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: var(--s7) 0 0; }
+.hero .wrap { display: grid; gap: var(--s6); align-items: center; }
+.hero h1 { font-size: 40px; line-height: 1.08; letter-spacing: -.025em; max-width: 12ch; }
+.hero .lead { margin-top: var(--s4); max-width: 34ch; }
+.hero .store-row { margin-top: var(--s5); }
+.hero .small { margin-top: var(--s3); }
+.hero .phone-wrap { width: min(100%, 320px); margin: var(--s4) auto 0; }
+.hero .phone { aspect-ratio: 1320/2360; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 0; }
+@media (min-width: 768px) {
+  .hero { padding-top: var(--s8); }
+  .hero .wrap { grid-template-columns: 1.1fr .9fr; gap: var(--s7); }
+  .hero h1 { font-size: 52px; }
+  .hero .lead { font-size: 20px; }
+  .hero .phone-wrap { width: min(100%, 360px); margin: 0 0 0 auto; }
+  .hero .phone { aspect-ratio: 1320/2868; border-radius: 9.5%/4.4%; border-bottom: 1px solid var(--hairline); }
+}
+@media (min-width: 1024px) { .hero h1 { font-size: 60px; } .hero .phone-wrap { width: 380px; } }
+.hero-base { height: 1px; background: var(--hairline); margin-top: var(--s7); }
+@media (min-width: 768px) { .hero-base { margin-top: var(--s8); } }
+
+/* ---------- Feature sections ---------- */
+.feature { padding: var(--s8) 0; }
+.feature .wrap { display: grid; gap: var(--s5); align-items: center; }
+.feature h2 { font-size: 30px; line-height: 1.15; }
+.feature p { margin-top: var(--s3); color: var(--text-2); max-width: 40ch; }
+.feature .phone-wrap { width: min(100%, 320px); margin: var(--s2) auto 0; }
+.feature + .feature { border-top: 1px solid var(--hairline); }
+@media (min-width: 768px) {
+  .feature { padding: 80px 0; }
+  .feature .wrap { grid-template-columns: 1fr 1fr; gap: var(--s8); }
+  .feature h2 { font-size: 38px; }
+  .feature p { font-size: 18px; }
+  .feature .phone-wrap { width: min(100%, 360px); margin: 0 auto; }
+  .feature.flip .copy { order: 2; }
+}
+/* Private section: the mark instead of a phone */
+.feature .mark-wrap { width: min(70%, 260px); margin: var(--s2) auto 0; }
+@media (min-width: 768px) { .feature .mark-wrap { width: min(100%, 340px); margin: 0 auto; } }
+
+/* ---------- The details ---------- */
+.facts { padding: var(--s8) 0; border-top: 1px solid var(--hairline); }
+.facts h2 { font-size: 30px; line-height: 1.15; }
+.facts ul { list-style: none; margin: var(--s5) 0 0; padding: 0; display: grid; gap: var(--s5); }
+.facts li { padding-top: var(--s4); border-top: 1px solid var(--hairline); }
+.facts b { display: block; font-weight: 600; font-size: 17px; line-height: 1.4; }
+.facts span { display: block; margin-top: var(--s1); color: var(--text-2); font-size: 16px; line-height: 1.5; }
+@media (min-width: 768px) {
+  .facts { padding: var(--s9) 0; }
+  .facts h2 { font-size: 38px; }
+  .facts ul { grid-template-columns: repeat(3, 1fr); gap: var(--s6) var(--s7); }
+}
+
+/* ---------- Download ---------- */
+.download { padding: var(--s8) 0; border-top: 1px solid var(--hairline); text-align: center; }
+.download h2 { font-size: 30px; line-height: 1.15; }
+.download .store-row { justify-content: center; margin-top: var(--s5); }
+.download .small { margin-top: var(--s3); }
+@media (min-width: 768px) { .download { padding: var(--s9) 0; } .download h2 { font-size: 38px; } }
+
+/* ---------- Support ---------- */
+.support { padding: var(--s8) 0; border-top: 1px solid var(--hairline); }
+.support h2 { font-size: 24px; line-height: 1.2; }
+.support p { margin-top: var(--s3); color: var(--text-2); max-width: 48ch; }
+.support a { color: var(--accent); font-weight: 500; }
+.support a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--hairline); padding: var(--s6) 0 var(--s7); }
+.footer .wrap { display: flex; flex-direction: column; gap: var(--s4); font-size: 14px; line-height: 1.45; color: var(--text-2); }
+.footer .copy { color: var(--text); }
+.footer nav { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s5); }
+.footer nav a:hover { color: var(--text); }
+@media (min-width: 768px) { .footer .wrap { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+/* ---------- Legal pages: reading layout ---------- */
+.read { max-width: var(--read); margin: 0 auto; padding: var(--s7) var(--gutter) var(--s8); line-height: 1.6; }
+.read h1 { font-size: 32px; line-height: 1.15; letter-spacing: -.02em; }
+.read .updated { margin: var(--s3) 0 var(--s6); font-size: 14px; color: var(--text-2); }
+.read h2 { font-size: 22px; line-height: 1.25; margin: var(--s7) 0 var(--s3); }
+.read h3 { font-size: 17px; letter-spacing: 0; margin: var(--s5) 0 var(--s2); }
+.read p { margin: 0 0 var(--s4); }
+.read ul, .read ol { padding-left: 1.2em; margin: 0 0 var(--s4); }
+.read li { margin-bottom: var(--s2); }
+.read strong, .read b { font-weight: 700; }
+.read a { color: var(--accent); }
+.read a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.read hr { border: 0; border-top: 1px solid var(--hairline); margin: var(--s7) 0; }
+@media (min-width: 768px) { .read { padding-top: var(--s8); } .read h1 { font-size: 40px; } .read h2 { font-size: 24px; } }
+
+/* ---------- Motion ---------- */
+/* Only hidden once the page's script has run (it adds .js), so nothing is lost with JavaScript off. */
+.js .reveal { opacity: 0; transform: translateY(12px); transition: opacity .42s ease, transform .42s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .badge { transition: none; }
+}
